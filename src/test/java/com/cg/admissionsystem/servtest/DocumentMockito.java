@@ -17,9 +17,9 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.cg.onlineadmissionsyst.module.Document;
-import com.cg.onlineadmissionsyst.repository.IDocumentRepository;
-import com.cg.onlineadmissionsyst.service.DocumentServiceImpl;
+import com.cg.admissionsystem.module.Document;
+import com.cg.admissionsystem.repository.IDocumentRepository;
+import com.cg.admissionsystem.service.DocumentServiceImpl;
 
 @ExtendWith(SpringExtension.class)
 class DocumentMockito {

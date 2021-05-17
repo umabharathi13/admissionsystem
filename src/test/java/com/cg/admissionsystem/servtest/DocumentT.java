@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.cg.onlineadmissionsyst.module.Document;
-import com.cg.onlineadmissionsyst.service.IDocumentService;
+import com.cg.admissionsystem.module.Document;
+import com.cg.admissionsystem.service.IDocumentService;
 
 @SpringBootTest
 class DocumentT {

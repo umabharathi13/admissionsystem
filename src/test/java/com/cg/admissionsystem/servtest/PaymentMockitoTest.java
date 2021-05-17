@@ -15,10 +15,10 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.cg.onlineadmissionsyst.module.Application;
-import com.cg.onlineadmissionsyst.module.Payment;
-import com.cg.onlineadmissionsyst.repository.IPaymentRepository;
-import com.cg.onlineadmissionsyst.service.PaymentServiceImpl;
+import com.cg.admissionsystem.module.Application;
+import com.cg.admissionsystem.module.Payment;
+import com.cg.admissionsystem.repository.IPaymentRepository;
+import com.cg.admissionsystem.service.PaymentServiceImpl;
 
 @ExtendWith(SpringExtension.class)
 class PaymentMockitoTest {
