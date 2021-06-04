@@ -1,7 +1,7 @@
 package com.cg.admissionsystem.exception;
 
 public class DocumentNotFoundException extends RuntimeException {
-	
+
 	public DocumentNotFoundException(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
@@ -16,6 +16,5 @@ public class DocumentNotFoundException extends RuntimeException {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
-
 
 }

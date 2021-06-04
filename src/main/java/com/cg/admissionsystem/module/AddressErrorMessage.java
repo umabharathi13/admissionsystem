@@ -1,11 +1,13 @@
 package com.cg.admissionsystem.module;
 
 public class AddressErrorMessage {
-	private int  status;
+	private int status;
 	private String message;
 	private long timestamp;
-	
-	public AddressErrorMessage() {}
+
+	public AddressErrorMessage() {
+	}
+
 	public AddressErrorMessage(int status, String message, long timestamp) {
 		super();
 		this.status = status;
@@ -41,7 +43,5 @@ public class AddressErrorMessage {
 	public String toString() {
 		return "AddressErrorMessage [status=" + status + ", message=" + message + ", timestamp=" + timestamp + "]";
 	}
-	
-	
 
 }

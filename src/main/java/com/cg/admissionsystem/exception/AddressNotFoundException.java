@@ -1,7 +1,7 @@
 package com.cg.admissionsystem.exception;
 
 public class AddressNotFoundException extends RuntimeException {
-	
+
 	public AddressNotFoundException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
@@ -12,7 +12,7 @@ public class AddressNotFoundException extends RuntimeException {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AddressNotFoundException(String message, Throwable cause)
-	{	  super(message,cause);
-}
+	public AddressNotFoundException(String message, Throwable cause) {
+		super(message, cause);
+	}
 }
