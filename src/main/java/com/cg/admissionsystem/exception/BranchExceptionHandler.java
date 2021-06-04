@@ -9,21 +9,23 @@ import com.cg.admissionsystem.module.BranchErrorResponse;
 
 @ControllerAdvice
 public class BranchExceptionHandler {
+
 	@ExceptionHandler
-	public  ResponseEntity<BranchErrorResponse> handleException(BranchNotFoundException e){
-		BranchErrorResponse err=new BranchErrorResponse();
+	public ResponseEntity<BranchErrorResponse> handleException(BranchNotFoundException e) {
+		BranchErrorResponse err = new BranchErrorResponse();
 		err.setStatus(HttpStatus.NOT_FOUND.value());
 		err.setMessage(e.getMessage());
 		err.setTimeStamp(System.currentTimeMillis());
-		return new ResponseEntity<>(err,HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
 	}
+
 	@ExceptionHandler
-	public  ResponseEntity<BranchErrorResponse> handleException(Exception e){
-		BranchErrorResponse err=new BranchErrorResponse();
+	public ResponseEntity<BranchErrorResponse> handleException(Exception e) {
+		BranchErrorResponse err = new BranchErrorResponse();
 		err.setStatus(HttpStatus.BAD_REQUEST.value());
 		err.setMessage(e.getMessage());
 		err.setTimeStamp(System.currentTimeMillis());
-		return new ResponseEntity<>(err,HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
 	}
 
 }

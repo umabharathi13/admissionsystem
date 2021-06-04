@@ -21,12 +21,12 @@ import com.cg.admissionsystem.service.BranchServiceImpl;
 
 @ExtendWith(SpringExtension.class)
 class BranchMockito {
-	
+
 	@InjectMocks
 	BranchServiceImpl brser;
 	@MockBean
 	IBranchRepository brrep;
-	
+
 	@BeforeEach
 	void init() {
 		MockitoAnnotations.openMocks(this);
@@ -34,13 +34,14 @@ class BranchMockito {
 
 	@Test
 	void createTest() {
-		Branch b=new Branch(101,"EEE","Electrical engineering");
+		Branch b = new Branch(101, "EEE", "Electrical engineering");
 		Mockito.when(brrep.save(b)).thenReturn(b);
-		Branch br=brrep.save(b);
-		assertEquals(101,br.getBranchId());
+		Branch br = brrep.save(b);
+		assertEquals(101, br.getBranchId());
 		assertEquals("EEE", br.getBranchName());
 		assertEquals("Electrical engineering", br.getBranchDescription());
 	}
+
 	@Test
 	void viewTest() {
 		Branch b = new Branch(101, "EEE", "Electrical");
@@ -52,46 +53,49 @@ class BranchMockito {
 		List<Branch> branches = brser.findAll();
 		assertEquals(2, branches.size());
 	}
+
 	@Test
 	void getByIdTest() {
-		Branch b=new Branch(101,"EEE","Electrical");
+		Branch b = new Branch(101, "EEE", "Electrical");
 		Mockito.when(brrep.findById(101)).thenReturn(Optional.of(b));
-		Branch b1=brser.getByBId(101);
+		Branch b1 = brser.getByBranchId(101);
 		assertEquals("Electrical", b1.getBranchDescription());
-		
+
 	}
+
 	@Test
 	void deleteTest() {
-		Branch b=new Branch(101,"EEE","Electrical");
+		Branch b = new Branch(101, "EEE", "Electrical");
 		Mockito.when(brrep.findById(101)).thenReturn(Optional.of(b));
 		brrep.deleteById(101);
-		Branch b1=brser.deleteByBranchId(101);
+		Branch b1 = brser.deleteByBranchId(101);
 		assertEquals("Electrical", b1.getBranchDescription());
 	}
+
 	@Test
 	void updateTest() {
-		Branch b=new Branch(101,"EEE","Electrical");
+		Branch b = new Branch(101, "EEE", "Electrical");
 		Mockito.when(brrep.findById(101)).thenReturn(Optional.of(b));
 		Mockito.when(brrep.save(b)).thenReturn(b);
-		Branch br=brser.update(b);
-		assertEquals(101,br.getBranchId());
+		Branch br = brser.updateBranch(b);
+		assertEquals(101, br.getBranchId());
 		assertEquals("EEE", br.getBranchName());
 		assertEquals("Electrical", br.getBranchDescription());
 	}
+
 	@Test
 	void getByNameTest() {
 		Branch b = new Branch(101, "EEE", "Electrical");
 		Mockito.when(brrep.findByName("EEE")).thenReturn(b);
-		Branch b2=brser.findByName("EEE");
-		assertEquals("EEE",b2.getBranchName());
+		Branch b2 = brser.findByName("EEE");
+		assertEquals("EEE", b2.getBranchName());
 	}
+
 	@Test
 	void deleteByNameTest() {
-		Branch b=new Branch(101,"EEE","Electrical");
+		Branch b = new Branch(101, "EEE", "Electrical");
 		Mockito.when(brrep.findByBranchName("EEE")).thenReturn(Optional.of(b));
 		brrep.deleteBranchByBranchName("EEE");
 	}
-	
-	
 
 }

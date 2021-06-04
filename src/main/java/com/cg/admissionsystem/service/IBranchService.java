@@ -6,23 +6,25 @@ import com.cg.admissionsystem.module.Branch;
 
 public interface IBranchService {
 
+	/**
+	 * Methods to be override by the implementing class
+	 * 
+	 */
+
 	Branch save(Branch branch);
 
 	Branch deleteByBranchId(int branchId);
 
-	Branch getByBId(int branchId);
+	Branch getByBranchId(int branchId);
 
 	List<Branch> findAll();
 
-	Branch update(Branch branch);
+	Branch updateBranch(Branch branch);
 
 	Branch findByName(String branchName);
-	
-	void deleteBranchByBranchName(String branchName);
-	
-	//patch
-	Branch updateB(int branchId,Branch branch);
 
-	//Branch update(int branchId, Branch branch);
+	void deleteBranchByBranchName(String branchName);
+
+	Branch updateBranchName(int branchId, Branch branch);
 
 }

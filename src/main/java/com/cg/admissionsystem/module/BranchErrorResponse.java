@@ -3,23 +3,23 @@ package com.cg.admissionsystem.module;
 import org.springframework.http.HttpStatus;
 
 public class BranchErrorResponse {
-	
+
 	private int status;
 	private String message;
 	private long timeStamp;
-	
-	public BranchErrorResponse() {}
-	
-	public BranchErrorResponse(int status,String message,long timeStamp) {
-		this.status=status;
-		this.message=message;
-		this.timeStamp=timeStamp;
+
+	public BranchErrorResponse() {
+	}
+
+	public BranchErrorResponse(int status, String message, long timeStamp) {
+		this.status = status;
+		this.message = message;
+		this.timeStamp = timeStamp;
 	}
 
 	public int getStatus() {
 		return status;
 	}
-
 
 	public String getMessage() {
 		return message;
@@ -38,14 +38,8 @@ public class BranchErrorResponse {
 	}
 
 	public void setStatus(HttpStatus notFound) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void setStatus(int value) {
-		// TODO Auto-generated method stub
-		
 	}
-	
-
 }
