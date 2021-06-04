@@ -1,10 +1,12 @@
 package com.cg.admissionsystem.servtest;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.logging.log4j.LogManager;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,73 +16,99 @@ import com.cg.admissionsystem.module.Address;
 import com.cg.admissionsystem.module.Branch;
 import com.cg.admissionsystem.module.College;
 import com.cg.admissionsystem.module.Course;
-import com.cg.admissionsystem.module.Program;
 import com.cg.admissionsystem.module.University;
 import com.cg.admissionsystem.service.IUniversityService;
 
 @SpringBootTest
 public class UniversityTest {
-		
-		@Autowired
-		IUniversityService uniser;
+	org.apache.logging.log4j.Logger logger = LogManager.getLogger(UniversityTest.class);
+	@Autowired
+	IUniversityService universityService;
 
-		@Test	
-		@Disabled
-		void testfindAll() {
-			List<University> u= uniser.findAll();
-			for(University u1:u) {
-				System.out.println(u1);
-			}
-			assertEquals(1,u.size());
+	/**
+	 * testing whether values present in database or not
+	 */
+	@Test
+	@Disabled
+
+	void testfindAll() {
+		List<University> university = universityService.findAll();
+		for (University university1 : university) {
+			logger.info(university1);
+			logger.info("logger added to findAll");
 		}
-		@Test
-		@Disabled
-		void testFindUniversityById() {
-			University u=uniser.getByUniversityId(105);
-			assertEquals(105,u.getUniversityId());
-		}
-		@Test
-		@Disabled
-		void testCreateUniversity() {
-            //Program pgm = new Program(120,"iit","7 months","B.EE","Intelligence it","PG","Onprocess");
-			//Address a=new Address(6,"salem","indian","salem","opp busstand","tamilnadu","635108");
-			Branch b=new Branch(117,"IT","Information Technology");
-			Branch b1=new Branch(118,"HRM","Human Resource Management");
-			List<Branch> branch=Stream.of(b,b1).collect(Collectors.toList());
-			Course course=new Course(10,"MBA","Master Of Business and Administration","PG",branch);
-			Branch b2=new Branch(119,"IT","Information Technology");
-			Branch b3=new Branch(120,"HRM","Human Resource Management");
-			List<Branch> branch1=Stream.of(b2,b3).collect(Collectors.toList());
-			Course course1=new Course(1,"M-TECH","Master Of Technology","PG",branch1);
-			List<Course> c1=Stream.of(course,course1).collect(Collectors.toList());
-			Address a=new Address(5,"chennai","indian","chennai","opp busstand","tamilnadu","635109");
-			College c=new College(99,"GCET",c1);
-		    University u= new University(101,"Anna University",a,c);
-			University u1 = uniser.save(u);
-			assertEquals(101,u1.getUniversityId());
-		}
-		@Test
-		@Disabled
-		void updateUniversityTest() {
-			University u=new University();
-			u.setUniversityId(105);
-			u.setName("KLU");
-			
-			University u1=uniser.update(u);
-			assertEquals(105,u1.getUniversityId());
-		}
-		@Test
-		@Disabled
-		void deleteUniversityTest() {
-			uniser.deleteUniversityById(105);
-			System.out.println("deleted");
-		}
-		@Test
-		@Disabled
-		void findbycolnametest() {
-			List<University> u=uniser.findBycollegeName("GCET");
-			System.out.println(u);
-		}
-		
+	}
+
+	/*
+	 * getting entry based on id
+	 */
+	@Test
+	@Disabled
+
+	void testFindUniversityById() {
+		University university = universityService.getByUniversityId(101);
+		assertEquals(101, university.getUniversityId());
+	}
+
+	/**
+	 * adding values to the database
+	 */
+	@Test
+	@Disabled
+
+	void testCreateUniversity() {
+
+		Branch branch = new Branch(117, "IT", "Information Technology");
+		Branch branch1 = new Branch(118, "HRM", "Human Resource Management");
+		List<Branch> branch2 = Stream.of(branch, branch1).collect(Collectors.toList());
+		Course course = new Course(10, "MBA", "Master Of Business and Administration", "PG", branch2);
+		Branch branch3 = new Branch(119, "IT", "Information Technology");
+		Branch branch4 = new Branch(120, "HRM", "Human Resource Management");
+		List<Branch> branch5 = Stream.of(branch3, branch4).collect(Collectors.toList());
+		Course course1 = new Course(1, "M-TECH", "Master Of Technology", "PG", branch5);
+		List<Course> course2 = Stream.of(course, course1).collect(Collectors.toList());
+		Address address = new Address(5, "chennai", "indian", "chennai", "opp busstand", "tamilnadu", "635109");
+		College college = new College(99, "GCET", course2);
+		University university = new University(101, "Anna University", address, college);
+		University university1 = universityService.save(university);
+		assertEquals(101, university1.getUniversityId());
+	}
+
+	/**
+	 * updating the values
+	 */
+	@Test
+	@Disabled
+
+	void updateUniversityTest() {
+		University university = new University();
+		university.setUniversityId(15);
+		university.setName("svci");
+
+		University university1 = universityService.updateUniversity(university);
+		assertEquals(15, university1.getUniversityId());
+	}
+
+	/**
+	 * deleting values by using id
+	 */
+	@Test
+	@Disabled
+
+	void deleteUniversityTest() {
+		universityService.deleteUniversityById(122);
+		logger.info("Deleted succefully");
+	}
+
+	/*
+	 * get college details using college name
+	 */
+	@Test
+	@Disabled
+
+	void findbycollegenametest() {
+		List<University> university = universityService.findByCollegeName("GCET");
+		logger.info(university);
+	}
 
 }

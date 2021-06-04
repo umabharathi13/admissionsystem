@@ -1,13 +1,14 @@
 package com.cg.admissionsystem.module;
 
-public class CollegeErrorresponse {
+public class CollegeErrorResponse {
 	private int status;
 	private String message;
 	private long timeStamp;
-	
-	public CollegeErrorresponse() {}
 
-	public CollegeErrorresponse(int status, String message, long timeStamp) {
+	public CollegeErrorResponse() {
+	}
+
+	public CollegeErrorResponse(int status, String message, long timeStamp) {
 		super();
 		this.status = status;
 		this.message = message;
@@ -37,6 +38,5 @@ public class CollegeErrorresponse {
 	public void setTimeStamp(long timeStamp) {
 		this.timeStamp = timeStamp;
 	}
-	
 
 }

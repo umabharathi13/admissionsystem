@@ -1,11 +1,11 @@
 package com.cg.admissionsystem.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.cg.admissionsystem.module.University;
+
 @Service
 public interface IUniversityService {
 	University save(University University);
@@ -16,9 +16,8 @@ public interface IUniversityService {
 
 	List<University> findAll();
 
-	University update(University university);
+	University updateUniversity(University university);
 
-	List<University> findBycollegeName(String collegeName);
+	List<University> findByCollegeName(String collegeName);
 
-	
 }
