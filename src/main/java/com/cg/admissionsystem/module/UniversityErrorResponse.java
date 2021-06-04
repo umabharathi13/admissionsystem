@@ -6,19 +6,19 @@ public class UniversityErrorResponse {
 	private int status;
 	private String message;
 	private long timeStamp;
-	
-	public UniversityErrorResponse() {}
-	
-	public UniversityErrorResponse(int status,String message,long timeStamp) {
-		this.status=status;
-		this.message=message;
-		this.timeStamp=timeStamp;
+
+	public UniversityErrorResponse() {
+	}
+
+	public UniversityErrorResponse(int status, String message, long timeStamp) {
+		this.status = status;
+		this.message = message;
+		this.timeStamp = timeStamp;
 	}
 
 	public int getStatus() {
 		return status;
 	}
-
 
 	public String getMessage() {
 		return message;
@@ -37,15 +37,12 @@ public class UniversityErrorResponse {
 	}
 
 	public void setStatus(HttpStatus notFound) {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void setStatus(int value) {
 		// TODO Auto-generated method stub
-		
-	}
-	
 
+	}
 
 }

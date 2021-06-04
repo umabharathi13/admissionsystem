@@ -7,81 +7,68 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.admissionsystem.module.College;
-import com.cg.admissionsystem.module.Course;
 import com.cg.admissionsystem.repository.ICollegeRepository;
 
 @Service
 public class CollegeServiceImpl implements ICollegeService {
-	
+
 	@Autowired
-	ICollegeRepository corep;
+	ICollegeRepository collegerepository;
 
 	@Override
-	public College save(College college) {
-		return corep.save(college);
+	public College addCollege(College college) {
+		return collegerepository.save(college);
 	}
 
 	@Override
 	public List<College> findAll() {
-		return corep.findAll();
+		return collegerepository.findAll();
 	}
 
 	@Override
-	public College getByCoId(int collegeId) {
-		Optional<College> co = corep.findById(collegeId);
-	    if(!co.isPresent()) {
-	    	return null;
-	    }
-	    return co.get();
+	public College getByCollegeId(int collegeId) {
+		Optional<College> college = collegerepository.findById(collegeId);
+		if (!college.isPresent()) {
+			return null;
+		}
+		return college.get();
 	}
 
 	@Override
 	public College deleteByCollegeId(int collegeId) {
-		Optional<College> co = corep.findById(collegeId);
-	    if(!co.isPresent()) {
-	    	return null;
-	    }
-		corep.deleteById(collegeId);
-		return co.get();
+		Optional<College> college = collegerepository.findById(collegeId);
+		if (!college.isPresent()) {
+			return null;
+		}
+		collegerepository.deleteById(collegeId);
+		return college.get();
 	}
 
 	@Override
-	public College findBycollegeName(String collegeName) {
-		College c=corep.findBycollegeName(collegeName);
-	     if(c==null) {
-	    	 return null;
-	     }
-	     return corep.findBycollegeName(collegeName);
+	public College findByCollegeName(String collegeName) {
+		College college1 = collegerepository.findBycollegeName(collegeName);
+		if (college1 == null) {
+			return null;
+		}
+		return collegerepository.findBycollegeName(collegeName);
 	}
 
 	@Override
 	public void deleteCollegeByCollegeName(String collegeName) {
-		College co=corep.findBycollegeName(collegeName);
-		int a=co.getCollegeRegId();
-		if(a!=0)
-		corep.deleteById(a);
+		College college = collegerepository.findBycollegeName(collegeName);
+		int a = college.getCollegeRegId();
+		if (a != 0)
+			collegerepository.deleteById(a);
 	}
 
 	@Override
-	public College updateC(int collegeId, College college) {
-		Optional<College> c = corep.findById(college.getCollegeRegId());
-		if(!c.isPresent()) {
+	public College updateCollegeName(int collegeId, College college) {
+		Optional<College> college1 = collegerepository.findById(college.getCollegeRegId());
+		if (!college1.isPresent()) {
 			return null;
 		}
-		c.get().setCollegeName(college.getCollegeName());
-		return corep.save(c.get());
+		college1.get().setCollegeName(college.getCollegeName());
+		return collegerepository.save(college1.get());
 	}
-/*
-	@Override
-	public College findBycouName(String courseName) {
-		College c=new College();
-		c.getCourse().g
-		College c=corep.findBycourseName(courseName);
-		if(c==null) {
-			return null;
-		}
-		return corep.findBycourseName(courseName);
-	}
-	
-*/
+
 }
