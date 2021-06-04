@@ -19,7 +19,6 @@ public class ProgramScheduledExceptionHandler {
 		error.setTimeStamp(System.currentTimeMillis());
 		return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);		
 	}
-	
 	@ExceptionHandler
 	public ResponseEntity<ProgramScheduledErrorMessage> handleException(Exception e){
 		ProgramScheduledErrorMessage error=new ProgramScheduledErrorMessage();
@@ -27,6 +26,5 @@ public class ProgramScheduledExceptionHandler {
 		error.setMessage("Enter the valid ID");
 		error.setTimeStamp(System.currentTimeMillis());
 		return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);		
-	}
-	
+	}	
 }

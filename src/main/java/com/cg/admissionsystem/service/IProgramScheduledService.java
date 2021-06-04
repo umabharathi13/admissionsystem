@@ -17,5 +17,4 @@ public interface IProgramScheduledService {
     ProgramScheduled updateProgramSchedule(int scheduledId,ProgramScheduled programSchedule);
     List<ProgramScheduled> findByStartDate(String startDate);
 	List<ProgramScheduled> findByCollegeName(String collegeName);
-
 }

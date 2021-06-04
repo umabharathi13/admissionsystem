@@ -14,8 +14,6 @@ public interface IProgramService {
 	 List<Program>findByProgramName(String programName);
 	 List<Program>findByProgramEligibility(String programEligibility);
 	 Program updateProgramStatus(int pgmid,Program program);
-	 List<Program> deleteProgramByProgramName(String programName);
-     List<Program> findByCollegeName(String collegeName);
-    
-
+     List<Program>findByCollegeName(String collegeName);
+   
 }

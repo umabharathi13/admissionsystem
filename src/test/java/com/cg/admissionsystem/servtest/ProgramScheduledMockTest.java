@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -39,9 +40,11 @@ class ProgramScheduledMockTest {
 	void init() {
 		MockitoAnnotations.openMocks(this);
 	}
-	
+	/**
+	 * MockitoTest case for the method adding the program schedule to the database
+	 */
 	@Test
-	void testaddProgramSchedule(){
+	void testAddProgramSchedule(){
 		Address a=new Address(5,"chennai","indian","chennai","opp busstand","tamilnadu","635109");
 		Address a1=new Address(6,"trichy","indian","trichy","opp busstand","tamilnadu","635109");
 		Program pgm = new Program(114,"IOT","3 years","B.S","Internet","12th","Completed");
@@ -49,13 +52,16 @@ class ProgramScheduledMockTest {
 		Course course=new Course(6,"MBA","Master of business administration","PG");
 		College col=new College(5001,"AIMS",a);
 		University university=new University(1001,"Anna university",a1,col);	
-		ProgramScheduled psch=new ProgramScheduled(101,"2017-04-16","2017-12-28","Part time",pgm,course,b,university,col);
+		ProgramScheduled psch=new ProgramScheduled(111,"2017-04-16","2017-12-28","Part time",pgm,course,b,university,col);
 		Mockito.when(ipsrep.save(psch)).thenReturn(psch);
 		ProgramScheduled programScheduled=pss.addProgramSchedule(psch);
 		assertEquals(111,programScheduled.getScheduleId());
 	}
+	/**
+	 * Mockito Test case for the method getting all the Program schedule in the form of list
+	 */
 	@Test
-	void testviewAllProgramScheduleDetails() {
+	void testViewAllProgramScheduleDetails() {
 		Address a=new Address(5,"chennai","indian","chennai","opp busstand","tamilnadu","635109");
 		Address a1=new Address(6,"trichy","indian","trichy","opp busstand","tamilnadu","635109");
 		Program pgm = new Program(114,"IOT","3 years","B.S","Internet","12th","Completed");
@@ -79,9 +85,11 @@ class ProgramScheduledMockTest {
 		List<ProgramScheduled> pgmm=pss.viewAllProgramScheduleDetails();
 		assertEquals(2,pgmm.size());
 	}
-	
+	/**
+	 * MockitoTest case for the method getting the program schedule by using scheduleId
+	 */
 	@Test
-	void testgetProgramScheduleById() {
+	void testGetProgramScheduleById() {
 		Address a=new Address(5,"chennai","indian","chennai","opp busstand","tamilnadu","635109");
 		Address a1=new Address(6,"trichy","indian","trichy","opp busstand","tamilnadu","635109");
 		Program pgm = new Program(114,"IOT","3 years","B.S","Internet","12th","Completed");
@@ -89,12 +97,15 @@ class ProgramScheduledMockTest {
 		Course course=new Course(6,"MBA","Master of business administration","PG");
 		College col=new College(5001,"AIMS",a);
 		University university=new University(1001,"Anna university",a1,col);	
-		ProgramScheduled psch=new ProgramScheduled(101,"2017-04-16","2017-12-28","Part time",pgm,course,b,university,col);
+		ProgramScheduled psch=new ProgramScheduled(111,"2017-04-16","2017-12-28","Part time",pgm,course,b,university,col);
 		Mockito.when(ipsrep.findById(103)).thenReturn(Optional.of(psch));
 		assertEquals(111,psch.getScheduleId());
 	}
+	/**
+	 * Mockito Test case for the method deleting the program schedule by using scheduleId
+	 */
 	@Test
-	void testdeleteProgramScheduleById() {
+	void testDeleteProgramScheduleById() {
 		Address a=new Address(5,"chennai","indian","chennai","opp busstand","tamilnadu","635109");
 		Address a1=new Address(6,"trichy","indian","trichy","opp busstand","tamilnadu","635109");
 		Program pgm = new Program(114,"IOT","3 years","B.S","Internet","12th","Completed");
@@ -102,14 +113,16 @@ class ProgramScheduledMockTest {
 		Course course=new Course(6,"MBA","Master of business administration","PG");
 		College col=new College(5001,"AIMS",a);
 		University university=new University(1001,"Anna university",a1,col);	
-		ProgramScheduled psch=new ProgramScheduled(101,"2017-04-16","2017-12-28","Part time",pgm,course,b,university,col);
+		ProgramScheduled psch=new ProgramScheduled(111,"2017-04-16","2017-12-28","Part time",pgm,course,b,university,col);
 		Mockito.when(ipsrep.findById(111)).thenReturn(Optional.of(psch));
 		ipsrep.deleteById(111);
 		assertEquals(111,psch.getScheduleId());
 	}
-	
+	/**
+	 * Mockito Test case for the method updating the program schedule details
+	 */
 	@Test 
-	void testupdateProgramSchedule() {
+	void testUpdateProgramSchedule() {
 		Address a=new Address(5,"chennai","indian","chennai","opp busstand","tamilnadu","635109");
 		Address a1=new Address(6,"trichy","indian","trichy","opp busstand","tamilnadu","635109");
 		Program pgm = new Program(114,"IOT","3 years","B.S","Internet","12th","Completed");
@@ -117,7 +130,7 @@ class ProgramScheduledMockTest {
 		Course course=new Course(6,"MBA","Master of business administration","PG");
 		College col=new College(5001,"AIMS",a);
 		University university=new University(1001,"Anna university",a1,col);	
-		ProgramScheduled psch=new ProgramScheduled(101,"2017-04-16","2017-12-28","Part time",pgm,course,b,university,col);
+		ProgramScheduled psch=new ProgramScheduled(111,"2017-04-16","2017-12-28","Part time",pgm,course,b,university,col);
 		Mockito.when(ipsrep.findById(111)).thenReturn(Optional.of(psch));
 		Mockito.when(ipsrep.save(psch)).thenReturn(psch);
 		ProgramScheduled programScheduled=pss.updateProgramSchedule(111,psch);
@@ -125,9 +138,11 @@ class ProgramScheduledMockTest {
 		assertEquals("2017-12-28",programScheduled.getEndDate());
 		assertEquals("Part time",programScheduled.getProgramSchedule());
 	}
-	
+	/**
+	 * Mockito Test case for the method getting the program schedule by using start date
+	 */
 	@Test
-	void testgetProgramScheduleByStartDate() {
+	void testGetProgramScheduleByStartDate() {
 		Address a=new Address(5,"chennai","indian","chennai","opp busstand","tamilnadu","635109");
 		Address a1=new Address(6,"trichy","indian","trichy","opp busstand","tamilnadu","635109");
 		Program pgm = new Program(114,"IOT","3 years","B.S","Internet","12th","Completed");
