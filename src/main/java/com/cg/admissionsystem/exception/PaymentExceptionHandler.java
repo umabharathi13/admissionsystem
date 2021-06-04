@@ -8,9 +8,9 @@ import com.cg.admissionsystem.module.PaymentErrorResponse;
 
 @ControllerAdvice
 public class PaymentExceptionHandler {
-	
+
 	@ExceptionHandler
-	public ResponseEntity<PaymentErrorResponse>handleException(PaymentNotFoundException e){
+	public ResponseEntity<PaymentErrorResponse> handleException(PaymentNotFoundException e) {
 		PaymentErrorResponse error = new PaymentErrorResponse();
 
 		error.setStatus(HttpStatus.NOT_FOUND.value()); // 404
@@ -19,17 +19,16 @@ public class PaymentExceptionHandler {
 
 		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
 	}
-	
+
 	@ExceptionHandler
 	public ResponseEntity<PaymentErrorResponse> handleException(Exception exception) {
 		PaymentErrorResponse error = new PaymentErrorResponse();
-		
+
 		error.setStatus(HttpStatus.BAD_REQUEST.value()); // 400
 		error.setMessage(exception.getMessage());
 		error.setTimestamp(System.currentTimeMillis());
-		
+
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
-	
 
 }

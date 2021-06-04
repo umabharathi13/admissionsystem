@@ -1,11 +1,20 @@
 package com.cg.admissionsystem.service;
 
+/**
+ * 
+ * @author Sherein.J
+ *
+ */
 import java.util.List;
 
 import com.cg.admissionsystem.module.Application;
 
 public interface IApplicationService {
-    
+
+	/**
+	 * Methods to be override by the implementing class
+	 * 
+	 */
 	Application addApplication(Application application);
 
 	List<Application> viewAllApplicationDetails();
@@ -19,15 +28,5 @@ public interface IApplicationService {
 	Application findByEmailId(String emailId);
 
 	List<Application> findByApplicationStatus(String applicationStatus);
-	
-
-	Application deleteApplicationByEmailId(String emailId);
-
-
-	
-
-
-
-	
 
 }
