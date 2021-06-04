@@ -1,71 +1,34 @@
 package com.cg.admissionsystem.module;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * DocumentEntity class
+ *
+ */
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Document {
+
+	/**
+	 * creating instance variables for the class DocumentEntity
+	 */
 	@Id
 	private int documentid;
 	private String documentName;
 	private String documentUrl;
 	private int applicantid;
+	@NotEmpty
+	@Email(message = "please enter emailid")
 	private String emailid;
 	private String documentStatus;
-	public Document(int documentid,String documentName, String documentUrl, int applicantid, String emailid,
-			String documentStatus) {
-		super();
-		this.documentid = documentid;
-		this.documentName = documentName;
-		this.documentUrl = documentUrl;
-		this.applicantid = applicantid;
-		this.emailid = emailid;
-		this.documentStatus = documentStatus;
-	}
-	public Document() {
-		super();
-	}//Uploaded/NotUploaded
-	public int getDocumentid() {
-		return documentid;
-	}
-	public void setDocumentid(int documentid) {
-		this.documentid = documentid;
-	}
-	public String getDocumentName() {
-		return documentName;
-	}
-	public void setDocumentName(String documentName) {
-		this.documentName = documentName;
-	}
-	public String getDocumentUrl() {
-		return documentUrl;
-	}
-	public void setDocumentUrl(String documentUrl) {
-		this.documentUrl = documentUrl;
-	}
-	public int getApplicantid() {
-		return applicantid;
-	}
-	public void setApplicantid(int applicantid) {
-		this.applicantid = applicantid;
-	}
-	public String getEmailid() {
-		return emailid;
-	}
-	public void setEmailid(String emailid) {
-		this.emailid = emailid;
-	}
-	public String getDocumentStatus() {
-		return documentStatus;
-	}
-	public void setDocumentStatus(String documentStatus) {
-		this.documentStatus = documentStatus;
-	}
-	@Override
-	public String toString() {
-		return "Document [documentid=" + documentid + ", documentName=" + documentName + ", documentUrl=" + documentUrl
-				+ ", applicantid=" + applicantid + ", emailid=" + emailid + ", documentStatus=" + documentStatus + "]";
-	}
-
-
 }

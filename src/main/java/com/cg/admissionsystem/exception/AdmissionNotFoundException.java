@@ -1,5 +1,5 @@
 package com.cg.admissionsystem.exception;
-
+//
 public class AdmissionNotFoundException extends RuntimeException {
 
 	public AdmissionNotFoundException(String message, Throwable cause) {
