@@ -8,35 +8,70 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * ApplicationEntity class
+ */
 @Entity
-public class Application
-{
-    @Id
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Application {
+	/**
+	 * Creating instance variables for the class ApplicationEntity
+	 */
+	@Id
 	private int applicationId;
+
+	@NotEmpty
+	@Size(min = 3, message = "name should have atleast 2 char")
 	private String applicantFullName;
+
 	private LocalDate dateOfBirth;
+
 	private String highestQualification;
+
 	private double finalYearPercentage;
+
 	private String goals;
+
+	@NotEmpty
+	@Email(message = "EmailId is not valid")
 	private String emailId;
+
 	private String applicationStatus;
+
 	private LocalDate dateOfInterview;
+
 	private String applicantInterviewFeedback;
-		
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinColumn(name="payment_id")
+
+	/**
+	 * OneToOne mapping with payment
+	 */
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "payment_id")
 	private Payment payment;
-	
-	
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinColumn(name="schedule_id")
+
+	/**
+	 * OneToOne mapping with programScheduled
+	 */
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "schedule_id")
 	private ProgramScheduled programscheduled;
-	
-	public Application() {}
-	
+
+	/**
+	 * Creating Parameterized Constructor
+	 */
 	public Application(int applicationId, String applicantFullName, LocalDate dateOfBirth, String highestQualification,
 			double finalYearPercentage, String goals, String emailId, String applicationStatus,
 			LocalDate dateOfInterview, String applicantInterviewFeedback) {
@@ -52,13 +87,13 @@ public class Application
 		this.dateOfInterview = dateOfInterview;
 		this.applicantInterviewFeedback = applicantInterviewFeedback;
 	}
-	
-	
-	
+
+	/**
+	 * Creating Parameterized Constructor
+	 */
 	public Application(int applicationId, String applicantFullName, LocalDate dateOfBirth, String highestQualification,
 			double finalYearPercentage, String goals, String emailId, String applicationStatus,
-			LocalDate dateOfInterview, String applicantInterviewFeedback, 
-			ProgramScheduled programscheduled) {
+			LocalDate dateOfInterview, String applicantInterviewFeedback, ProgramScheduled programscheduled) {
 		super();
 		this.applicationId = applicationId;
 		this.applicantFullName = applicantFullName;
@@ -73,89 +108,28 @@ public class Application
 		this.programscheduled = programscheduled;
 	}
 
-	public int getApplicationId() {
-		return applicationId;
-	}
-	public void setApplicationId(int applicationId) {
-		this.applicationId = applicationId;
-	}
-	public String getApplicantFullName() {
-		return applicantFullName;
-	}
-	public void setApplicantFullName(String applicantFullName) {
-		this.applicantFullName = applicantFullName;
-	}
-	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
-	}
-	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-	public String getHighestQualification() {
-		return highestQualification;
-	}
-	public void setHighestQualification(String highestQualification) {
-		this.highestQualification = highestQualification;
-	}
-	public double getFinalYearPercentage() {
-		return finalYearPercentage;
-	}
-	public void setFinalYearPercentage(double finalYearPercentage) {
-		this.finalYearPercentage = finalYearPercentage;
-	}
-	public String getGoals() {
-		return goals;
-	}
-	public void setGoals(String goals) {
-		this.goals = goals;
-	}
-	public String getEmailId() {
-		return emailId;
-	}
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-	public String getApplicationStatus() {
-		return applicationStatus;
-	}
-	public void setApplicationStatus(String applicationStatus) {
-		this.applicationStatus = applicationStatus;
-	}
-	public LocalDate getDateOfInterview() {
-		return dateOfInterview;
-	}
-	public void setDateOfInterview(LocalDate dateOfInterview) {
-		this.dateOfInterview = dateOfInterview;
-	}
-	public String getApplicantInterviewFeedback() {
-		return applicantInterviewFeedback;
-	}
-	public void setApplicantInterviewFeedback(String applicantInterviewFeedback) {
-		this.applicantInterviewFeedback = applicantInterviewFeedback;
-	}
-	
-	@JsonBackReference
+	/**
+	 * JsonBackReferences are used to display objects with parent child
+	 * relationship.
+	 * 
+	 * @return
+	 */
+	@JsonManagedReference
 	public Payment getPayment() {
 		return payment;
 	}
 
-
-	public void setPayment(Payment payment) {
-		this.payment = payment;
-	}
-
+	/**
+	 * Implementing and overriding toString to retrieve all values in the instance
+	 * of Application Class
+	 */
 	@Override
 	public String toString() {
 		return "Application [applicationId=" + applicationId + ", applicantFullName=" + applicantFullName
 				+ ", dateOfBirth=" + dateOfBirth + ", highestQualification=" + highestQualification
 				+ ", finalYearPercentage=" + finalYearPercentage + ", goals=" + goals + ", emailId=" + emailId
 				+ ", applicationStatus=" + applicationStatus + ", dateOfInterview=" + dateOfInterview
-				+ ", applicantInterviewFeedback=" + applicantInterviewFeedback + ", payment=" + payment
-				+ ", programscheduled=" + programscheduled + "]";
+				+ ", applicantInterviewFeedback=" + applicantInterviewFeedback + "]";
 	}
 
-	
-
-	
-	
 }

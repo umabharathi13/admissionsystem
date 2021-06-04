@@ -1,20 +1,28 @@
 package com.cg.admissionsystem.exception;
 
+/**
+ * Class ApplicationNotFoundException extends {@link java.lang.Exception}
+ */
 public class PaymentNotFoundException extends RuntimeException {
 
+	/**
+	 * Generated serialVersioUID
+	 */
+	private static final long serialVersionUID = 7307592686512161447L;
+
+	/**
+	 * Super class for Exception
+	 */
 	public PaymentNotFoundException(String message, Throwable cause) {
 		super(message, cause);
-		// TODO Auto-generated constructor stub
 	}
 
 	public PaymentNotFoundException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 	public PaymentNotFoundException(Throwable cause) {
 		super(cause);
-		// TODO Auto-generated constructor stub
 	}
 
 }

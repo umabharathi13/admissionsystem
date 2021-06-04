@@ -35,7 +35,6 @@ public class ApplicationErrorResponse  {
 	}
 
 	public void setTimeStamp(long currentTimeMillis) {
-		// TODO Auto-generated method stub
 		
 	}
 	
