@@ -34,7 +34,7 @@ public interface ICourseRepository extends JpaRepository<Course, Integer> {
 	public Optional<Course> findByCourseName(String courseName);
 
 	// find all courses by collegeName
-	@Query(value = "select * from course inner join college on course.college_id=college.college_reg_id where college.college_name =:n", nativeQuery = true)
+	@Query(value = "select * from course inner join college on course.clge_id=college.college_reg_id where college.college_name =:n", nativeQuery = true)
 	public List<Course> findBycollegeName(@Param("n") String collegeName);
 
 }

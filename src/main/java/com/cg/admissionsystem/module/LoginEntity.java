@@ -23,5 +23,4 @@ public class LoginEntity {
 	@NotEmpty(message = "Please enter your password")
 	private String password;
 	private boolean isLoggedIn = false;
-	private String role;
 }

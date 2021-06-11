@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cg.admissionsystem.module.UserEntity;
+import com.cg.admissionsystem.module.User;
 
 import com.cg.admissionsystem.exception.UserNotFoundException;
 import com.cg.admissionsystem.service.IUserService;
@@ -41,7 +41,7 @@ public class UserController {
 	 * to the user service
 	 */
 	@GetMapping("/users/{userid}")
-	public UserEntity findUserByUserId(@PathVariable String userid) {
+	public User findUserByUserId(@PathVariable String userid) {
 		if (regservice.findUserByUserId(userid) == null) {
 			throw new UserNotFoundException("User not found with this userid ");
 		}
@@ -55,7 +55,7 @@ public class UserController {
 	 * service
 	 */
 	@GetMapping("/users")
-	public List<UserEntity> findAllusers() {
+	public List<User> findAllusers() {
 		logger.info("Printing all the Users");
 		return regservice.getAllUsers();
 
@@ -65,8 +65,8 @@ public class UserController {
 	 * This below function is used to create a new user and redirects to the user
 	 * service
 	 */
-	@PostMapping("/users")
-	public UserEntity save(@Valid @RequestBody UserEntity user) {
+	@PostMapping("/users/add")
+	public User save(@Valid @RequestBody User user) {
 		logger.info("Creating a User");
 		return regservice.createUser(user);
 	}
@@ -75,8 +75,8 @@ public class UserController {
 	 * This below function is used to update a specific user based on the give
 	 * userId and redirects to the user service
 	 */
-	@PutMapping("/users/{userid}/update")
-	public UserEntity updateUser(@PathVariable String userid, @Valid @RequestBody UserEntity user) {
+	@PutMapping("/users/update/{userid}")
+	public User updateUser(@PathVariable String userid, @Valid @RequestBody User user) {
 		if (regservice.findUserByUserId(userid) == null) {
 			throw new UserNotFoundException("User not found with this Userid");
 		}
@@ -90,7 +90,7 @@ public class UserController {
 	 * userId and redirects to the user service
 	 */
 	@DeleteMapping("/users/{userid}")
-	public UserEntity deleteUserByUserId(@PathVariable String userid) {
+	public User deleteUserByUserId(@PathVariable String userid) {
 		if (regservice.findUserByUserId(userid) == null) {
 			throw new UserNotFoundException("User not found with Userid");
 		}

@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.cg.admissionsystem.module.UserEntity;
+
+import com.cg.admissionsystem.exception.UserNotFoundException;
+import com.cg.admissionsystem.module.User;
 import com.cg.admissionsystem.repository.IUserRepository;
 
 @Service
@@ -18,14 +20,17 @@ public class UserServiceImpl implements IUserService {
 	 * 
 	 */
 	@Override
-	public UserEntity createUser(UserEntity user) {
+	public User createUser(User user) {
+		Optional<User> optional =regRepo.findById(user.getUserid());
+		if(optional.isPresent()) {
+			throw new UserNotFoundException("UserId already exists");
+		}
 		return regRepo.save(user);
-
 	}
 
 	@Override
-	public UserEntity findUserByUserId(String userid) {
-		Optional<UserEntity> optional = regRepo.findById(userid);
+	public User findUserByUserId(String userid) {
+		Optional<User> optional = regRepo.findById(userid);
 		if (!optional.isPresent()) {
 			return null;
 		}
@@ -34,13 +39,13 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public List<UserEntity> getAllUsers() {
+	public List<User> getAllUsers() {
 		return regRepo.findAll();
 	}
 
 	@Override
-	public UserEntity updateUser(UserEntity user) {
-		UserEntity dbUser = getUser(user);
+	public User updateUser(User user) {
+		User dbUser = getUser(user);
 		if (isNullOrEmpty(dbUser.getFirstname())) {
 			dbUser.setFirstname(user.getFirstname());
 		}
@@ -56,6 +61,10 @@ public class UserServiceImpl implements IUserService {
 		if (isNullOrEmpty(dbUser.getMobileNumber())) {
 			dbUser.setMobileNumber(user.getMobileNumber());
 		}
+		if (isNullOrEmpty(dbUser.getAadharnumber())) {
+			dbUser.setAadharnumber(user.getAadharnumber());
+		}
+		
 		return regRepo.save(dbUser);
 	}
 
@@ -63,9 +72,9 @@ public class UserServiceImpl implements IUserService {
 		return value != null && !value.equals("");
 	}
 
-	private UserEntity getUser(UserEntity user) {
-		Optional<UserEntity> userfield = regRepo.findById(user.getUserid());
-		UserEntity dbUser = null;
+	private User getUser(User user) {
+		Optional<User> userfield = regRepo.findById(user.getUserid());
+		User dbUser = null;
 		if (userfield.isPresent()) {
 			dbUser = userfield.get();
 		}
@@ -73,8 +82,8 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public UserEntity deleteUserByUserId(String userid) {
-		Optional<UserEntity> optional = regRepo.findById(userid);
+	public User deleteUserByUserId(String userid) {
+		Optional<User> optional = regRepo.findById(userid);
 		if (!optional.isPresent()) {
 			return null;
 		}

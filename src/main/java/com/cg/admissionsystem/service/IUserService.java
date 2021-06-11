@@ -2,7 +2,7 @@ package com.cg.admissionsystem.service;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
-import com.cg.admissionsystem.module.UserEntity;
+import com.cg.admissionsystem.module.User;
 
 @Service
 public interface IUserService {
@@ -12,25 +12,25 @@ public interface IUserService {
 	 * @param userid
 	 * @return UserEntity
 	 */
-	public UserEntity findUserByUserId(String userid);
+	public User findUserByUserId(String userid);
 
 	/**
 	 * Retrieves user
 	 * 
 	 * @return
 	 */
-	public List<UserEntity> getAllUsers();
+	public List<User> getAllUsers();
 
 	/**
 	 * Creates user record in the entity table
 	 * 
-	 * @param UserEntity
+	 * @param User
 	 * @return UserEntity
 	 */
-	public UserEntity createUser(UserEntity user);
+	public User createUser(User user);
 
-	public UserEntity updateUser(UserEntity user);
+	public User updateUser(User user);
 
-	public UserEntity deleteUserByUserId(String userid);
+	public User deleteUserByUserId(String userid);
 
 }

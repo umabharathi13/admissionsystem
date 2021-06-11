@@ -47,10 +47,10 @@ public class CourseController {
 	 */
 
 	@PostMapping("/course")
-	public ResponseEntity<Course> addCourse(@RequestBody Course course) {
+	public Course addCourse(@RequestBody Course course) {
 		logger.info("Adding Course Details");
 		crser.save(course);
-		return ResponseEntity.ok(course);
+		return crser.save(course);
 	}
 
 	/**
@@ -63,10 +63,9 @@ public class CourseController {
 	 */
 
 	@GetMapping("/course")
-	public ResponseEntity<List<Course>> findAllCourse() {
+	public List<Course> findAllCourse() {
 		logger.info("Getting all Courses");
-		List<Course> course = crser.findAll();
-		return ResponseEntity.ok().body(course);
+		return crser.findAll();
 	}
 
 	@GetMapping("/course/id/{id}")

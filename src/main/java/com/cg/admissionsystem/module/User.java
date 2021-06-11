@@ -20,7 +20,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "RegisterUser")
-public class UserEntity {
+public class User {
 	/**
 	 * UserId Validation
 	 */
@@ -43,7 +43,7 @@ public class UserEntity {
 	 */
 	@NotEmpty(message = "Please Enter your FirstName")
 	@Pattern(regexp = "[A-Za-z]+", message = "FirstName is Invalid")
-	@Size(min = 2, max = 10, message = "Firstname should have atleast 7 characters not less than 10 characters")
+	@Size(min = 2, max = 20, message = "Firstname should have atleast 7 characters not less than 10 characters")
 	private String firstname;
 
 	/**
@@ -51,13 +51,13 @@ public class UserEntity {
 	 */
 	@NotEmpty(message = "Please Enter your LastName")
 	@Pattern(regexp = "[A-Za-z]+", message = "LastName is Invalid")
-	@Size(min = 1, max = 10, message = "Lastnmae should have atleast 7 characters not less than 10 characters")
+	@Size(min = 1, max = 20, message = "Lastnmae should have atleast 7 characters not less than 10 characters")
 	private String lastname;
 
 	/**
 	 * MobileNumber Validation
 	 */
-	@NotEmpty(message = "Please Enter Your EmailId")
+	@NotEmpty(message = "Please Enter Your mobile number")
 	@Pattern(regexp = "^[0-9]{10}$", message = "Mobile Number is Invalid")
 	@Size(min = 10, max = 10, message = "Mobile Number less than 10 is Invalid")
 	private String mobileNumber;
@@ -72,9 +72,10 @@ public class UserEntity {
 	/**
 	 * AadharNumber Validation
 	 */
-	@NotEmpty(message = "Please Enter Your EmailId")
-	@Pattern(regexp = "^[0-9]{12}$", message = "Mobile Number is Invalid")
-	@Size(min = 10, max = 10, message = "Mobile Number less than 10 is Invalid")
+	@NotEmpty(message = "Please Enter Your Aadharno")
+	@Pattern(regexp = "^[0-9]{12}$", message = "Aadhar Number is Invalid")
+	@Size(min = 12, max = 12, message = "Aadhar Number less than 12 is Invalid")
 	private String aadharnumber;
+	
 	
 }
