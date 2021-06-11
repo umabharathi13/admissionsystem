@@ -29,7 +29,7 @@ class AdmissionT {
 	IAdmissionService ad;
 
 	@Test
-	// @Disabled
+	 @Disabled
 	void addAdmission() {
 
 		Program pgm = new Program(120, "iit", "7 months", "B.EE", "Intelligence it", "PG", "Onprocess");
@@ -59,5 +59,38 @@ class AdmissionT {
 		assertEquals(1, view.size());
 
 	}
+	@Test
+	@Disabled
+	void deleteAdmissionByIdTest() {
+		Admission view = ad.deleteAdmissionById(2);
+		logger.info(view);
+		logger.info("deleted succesfully");
+		assertEquals(2, view.getAdmissionId());
+	}
+
+	@Test
+	@Disabled
+	void updateAdmission() {
+		Admission app = new Admission();
+		app.setAdmissionId(5);
+		app.setEmailId("raj@gmail.com");
+		app.setAdmissionStatus("onprocess");
+		app.setYear("2021");
+		Admission view = ad.updateAdmission(app);
+		logger.info(view);
+		logger.info("updating values");
+		assertEquals(2, view.getAdmissionId());
+	}
+
+	@Test
+	@Disabled
+	void getAdmissionById() {
+		Admission view = ad.getAdmissionById(3);
+		logger.info(view);
+		logger.info("getting admission by id");
+		assertEquals(1, view.getAdmissionId());
+
+	}
+
 
 }

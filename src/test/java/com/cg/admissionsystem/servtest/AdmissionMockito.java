@@ -3,6 +3,7 @@ package com.cg.admissionsystem.servtest;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -87,4 +88,32 @@ class AdmissionMockito {
 		List<Admission> admissionlist = ass.viewAll();
 		assertEquals(2, admissionlist.size());
 	}
+	
+	@Test
+	@Disabled
+	void DeleteAdmissionByIdTest() {
+		Admission a = new Admission(1, "raj@gmail.com", "onprocess", "2021");
+		Mockito.when(ar.findById(1)).thenReturn(Optional.of(a));
+		ass.deleteAdmissionById(4);
+		assertEquals(4, a.getAdmissionId());
+	}
+
+	@Test
+	@Disabled
+	void updateAdmission() {
+		Admission a = new Admission(2, "umabr@gmail.com", "pending", "2016");
+		Mockito.when(ar.findById(4)).thenReturn(Optional.of(a));
+		Mockito.when(ass.save(a)).thenReturn(a);
+		Admission admission = ass.updateAdmission(a);
+		assertEquals("2020", admission.getYear());
+	}
+
+	@Test
+	@Disabled
+	void getAdmissionById() {
+		Admission a = new Admission(2, "umabr@gmail.com", "pending", "2016");
+		Mockito.when(ar.findById(2)).thenReturn(Optional.of(a));
+		assertEquals(4, a.getAdmissionId());
+	}
+
 }
