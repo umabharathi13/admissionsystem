@@ -16,7 +16,7 @@ public class CollegeServiceImpl implements ICollegeService {
 	ICollegeRepository collegerepository;
 
 	@Override
-	public College addCollege(College college) {
+	public College save(College college) {
 		return collegerepository.save(college);
 	}
 
@@ -26,8 +26,8 @@ public class CollegeServiceImpl implements ICollegeService {
 	}
 
 	@Override
-	public College getByCollegeId(int collegeId) {
-		Optional<College> college = collegerepository.findById(collegeId);
+	public College getCollegeByCollegeRegId(int collegeRegId) {
+		Optional<College> college = collegerepository.findById(collegeRegId);
 		if (!college.isPresent()) {
 			return null;
 		}
@@ -35,12 +35,12 @@ public class CollegeServiceImpl implements ICollegeService {
 	}
 
 	@Override
-	public College deleteByCollegeId(int collegeId) {
-		Optional<College> college = collegerepository.findById(collegeId);
+	public College deleteCollegeByCollegeRegId(int collegeRegId) {
+		Optional<College> college = collegerepository.findById(collegeRegId);
 		if (!college.isPresent()) {
 			return null;
 		}
-		collegerepository.deleteById(collegeId);
+		collegerepository.deleteById(collegeRegId);
 		return college.get();
 	}
 
@@ -62,7 +62,7 @@ public class CollegeServiceImpl implements ICollegeService {
 	}
 
 	@Override
-	public College updateCollegeName(int collegeId, College college) {
+	public College updateCollegeName(int collegeRegId, College college) {
 		Optional<College> college1 = collegerepository.findById(college.getCollegeRegId());
 		if (!college1.isPresent()) {
 			return null;

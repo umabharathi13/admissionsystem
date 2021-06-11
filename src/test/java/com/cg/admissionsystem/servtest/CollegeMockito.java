@@ -62,7 +62,7 @@ public class CollegeMockito {
 		University university = new University(2036, "Anna University", address, college);
 		College college1 = new College(12, "OIUHT", address, program2, course2, university);
 		Mockito.when(((ICollegeRepository) collegeRepository).save(college)).thenReturn(college);
-		College college2 = collegeService.addCollege(college);
+		College college2 = collegeService.save(college);
 		assertEquals(12, college2.getCollegeRegId());
 
 	}
@@ -140,7 +140,7 @@ public class CollegeMockito {
 		University u = new University(2036, "Anna University", a, col);
 		College college = new College(12, "OIUHT", a, p, c, u);
 		Mockito.when(collegeRepository.findById(1)).thenReturn(Optional.of(college));
-		College c1 = collegeService.getByCollegeId(1);
+		College c1 = collegeService.getCollegeByCollegeRegId(1);
 		assertEquals("OIUHT", c1.getCollegeName());
 	}
 

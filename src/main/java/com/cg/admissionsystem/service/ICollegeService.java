@@ -9,18 +9,18 @@ import com.cg.admissionsystem.module.College;
 @Service
 public interface ICollegeService {
 
-	College addCollege(College college);
+	College save(College college);
 
 	List<College> findAll();
 
-	College getByCollegeId(int collegeId);
+	College getCollegeByCollegeRegId(int collegeRegId);
 
-	College deleteByCollegeId(int collegeId);
+	College deleteCollegeByCollegeRegId(int collegeRegId);
 
 	College findByCollegeName(String collegeName);
 
 	void deleteCollegeByCollegeName(String collegeName);
 
-	College updateCollegeName(int collegeId, College college);
+	College updateCollegeName(int collegeRegId, College college);
 
 }

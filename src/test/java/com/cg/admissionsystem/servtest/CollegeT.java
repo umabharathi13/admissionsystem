@@ -55,7 +55,7 @@ public class CollegeT {
 		College college = new College(655, "IUYT", address3);
 		University university = new University(2036, "Anna University", address3, college);
 		College college1 = new College(3654, "OIUHT", address, program, course2, university);
-		College college2 = collegeService.addCollege(college);
+		College college2 = collegeService.save(college);
 		logger.info(college2);
 		logger.info("Added college Details successfully");
 		assertEquals(3654, college1.getCollegeRegId());
@@ -80,21 +80,21 @@ public class CollegeT {
 	@Test
 	@Disabled
 
-	void testGetByCollegeId() {
-		College college = collegeService.getByCollegeId(22);
+	void testGetByCollegeRegId() {
+		College college = collegeService.getCollegeByCollegeRegId(23);
 		logger.info(college);
 		logger.info("Get the values By Id");
-		assertEquals(22, college.getCollegeRegId());
+		assertEquals(23, college.getCollegeRegId());
 	}
 	/*
 	 * delete the entry using id
 	 */
 
 	@Test
-	// @Disabled
+	 @Disabled
 
-	void testDeleteCollegeId() {
-		College college = collegeService.deleteByCollegeId(18);
+	void testDeleteCollegeRegId() {
+		College college = collegeService.deleteCollegeByCollegeRegId(18);
 
 		logger.info(college);
 		logger.info("deleted college by Id");
@@ -109,18 +109,18 @@ public class CollegeT {
 	@Disabled
 
 	void testFindByName() {
-		College college = collegeService.findByCollegeName("ksrm");
+		College college = collegeService.findByCollegeName("Cmr");
 
 		logger.info(college);
 		logger.info("Find college By Name");
-		assertEquals("ksrm", college.getCollegeName());
+		assertEquals("Cmr", college.getCollegeName());
 	}
 
 	/*
 	 * update the entry by using name
 	 */
 	@Test
-	// @Disabled
+	@Disabled
 
 	void testUpdateCollegeName() {
 		College college = new College();
