@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -21,6 +22,7 @@ import com.cg.admissionsystem.module.College;
 import com.cg.admissionsystem.module.Course;
 import com.cg.admissionsystem.service.ICollegeService;
 
+@CrossOrigin
 @RestController
 public class CollegeController {
 	org.apache.logging.log4j.Logger logger = LogManager.getLogger(CollegeController.class);
