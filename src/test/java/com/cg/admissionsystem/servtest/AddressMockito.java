@@ -17,6 +17,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.cg.admissionsystem.module.Address;
+import com.cg.admissionsystem.module.Document;
 import com.cg.admissionsystem.repository.IAddressRepository;
 import com.cg.admissionsystem.service.AddressServiceImpl;
 
@@ -69,7 +70,7 @@ class AddressMockito {
 	@Test
 	@Disabled
 	void updateAddress() {
-		Address a = new Address(4, "chennai", "chennai", "tamilnadu", "usa", "603004", "opp busstand");
+		Address a = new Address(4, "chennai", "indian", "chennai", "near bustsand", "tamilnadu", "600053");
 		Mockito.when(are.findById(4)).thenReturn(Optional.of(a));
 		Mockito.when(are.save(a)).thenReturn(a);
 		Address address = as.updateAddress(a);

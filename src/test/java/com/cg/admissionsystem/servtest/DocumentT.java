@@ -22,7 +22,7 @@ class DocumentT {
 	IDocumentService ds;
 
 	@Test
-	// @Disabled
+	 @Disabled
 	void addDocumentTest() {
 		Document doc = new Document(14, "sprint2", "www.sprint2.com", 5, "raja@gmail.com", "approved");
 		Document d = ds.save(doc);
@@ -32,7 +32,7 @@ class DocumentT {
 	}
 
 	@Test
-	// @Disabled
+	 @Disabled
 	void viewApplicationTest() {
 		List<Document> view = ds.viewAll();
 		logger.info(view);
