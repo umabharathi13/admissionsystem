@@ -56,9 +56,9 @@ public class ApplicationController {
 	 * @return
 	 */
 	@GetMapping("/application")
-	public ResponseEntity<List<Application>> viewAllDetails() {
+	public  List<Application> viewAllDetails() {
 		logger.info("ApplicationDetails is viewed");
-		return ResponseEntity.ok(appService.viewAllApplicationDetails());
+		return appService.viewAllApplicationDetails();
 	}
 
 	/**
