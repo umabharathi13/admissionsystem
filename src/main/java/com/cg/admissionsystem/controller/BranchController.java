@@ -48,10 +48,9 @@ public class BranchController {
 	 */
 
 	@PostMapping("/branch")
-	public ResponseEntity<Branch> addBranch(@RequestBody Branch branch) {
-		brser.save(branch);
+	public Branch addBranch(@RequestBody Branch branch) {
 		logger.info("New Branch is added");
-		return ResponseEntity.ok(branch);
+		return brser.save(branch);
 	}
 
 	/**
@@ -64,10 +63,9 @@ public class BranchController {
 	 */
 
 	@GetMapping("/branch")
-	public ResponseEntity<List<Branch>> findAllBranch() {
-		List<Branch> branch = brser.findAll();
+	public List<Branch> findAllBranch() {
 		logger.info("Getting all Branch");
-		return ResponseEntity.ok().body(branch);
+		return brser.findAll();
 	}
 
 	@GetMapping("/branch/id/{id}")
